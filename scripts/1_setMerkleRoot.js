@@ -2,8 +2,8 @@ const newMerkleRoot = '0xa758df020ed4cca092118f2889cc26bd5746278be08c87ef04204b0
 
 module.exports = async function main(callback) {
   try {
-    const NFTisse = artifacts.require("NFTisse");
-    const contract = await NFTisse.deployed();
+    const Renascence = artifacts.require("Renascence");
+    const contract = await Renascence.deployed();
     if (newMerkleRoot == '') {
       console.log('[!] You need to specify a merkle root hash.');
       callback(1);

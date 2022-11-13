@@ -1,7 +1,7 @@
 module.exports = async function main(callback) {
   try {
-    const NFTisse = artifacts.require("NFTisse");
-    const contract = await NFTisse.deployed();
+    const Renascence = artifacts.require("Renascence");
+    const contract = await Renascence.deployed();
     await contract.withdraw();
     console.log(`[+] Withdrew funds!`);
     callback(0);

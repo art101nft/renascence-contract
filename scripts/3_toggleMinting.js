@@ -1,7 +1,7 @@
 module.exports = async function main(callback) {
   try {
-    const NFTisse = artifacts.require("NFTisse");
-    const contract = await NFTisse.deployed();
+    const Renascence = artifacts.require("Renascence");
+    const contract = await Renascence.deployed();
     const mintingIsActive = await contract.mintingIsActive();
     console.log(`[+] Toggling mintingIsActive. Currently: ${mintingIsActive}`);
     await contract.toggleMinting();

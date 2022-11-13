@@ -22,7 +22,7 @@ contract Renascence is ERC721A, Ownable {
     using SafeMath for uint256;
 
     enum MintPhase {
-        RESERVED,  // 1 - only NFTISSE holders can mint
+        RESERVED,  // 1 - only Renascence holders can mint
         PUBLIC     // 2 - no requirements, public can mint, including reserves
     }
 

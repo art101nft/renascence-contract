@@ -1,9 +1,9 @@
-const newURI = 'ipfs://QmZYMddjA5Hks1uzMHGmg8XwMpc893nWYRX8Xt2PVuvsrY/';
+const newURI = 'ipfs://QmWjm4jQpjxYbL4QgG4wgZ2s4nyi1mtVme4mgdgWZ7NJAw/';
 
 module.exports = async function main(callback) {
   try {
-    const NFTisse = artifacts.require("NFTisse");
-    const nfs = await NFTisse.deployed();
+    const Renascence = artifacts.require("Renascence");
+    const nfs = await Renascence.deployed();
     if (newURI == '') {
       console.log('You need to specify a metadata URI where assets can be loaded. ie: "ipfs://xxxxxx/"');
       callback(1);
