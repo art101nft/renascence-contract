@@ -35,10 +35,10 @@ contract Renascence is ERC721A, Ownable {
     bool public merkleSet = false;                 // if contract merkle setup
     bool public mintingIsActive = false;           // control if mints can proceed
     bool public reservedTokens = false;            // if team has minted tokens already
-    uint256 public constant maxSupply = 3072;      // total supply
-    uint256 public constant maxMint = 3;           // max per mint (non-holders)
-    uint256 public constant maxWallet = 3;         // max per wallet (non-holders)
-    uint256 public constant teamReserve = 52;      // amount to mint to the team
+    uint256 public constant maxSupply = 4096;      // total supply
+    uint256 public constant maxMint = 4;           // max per mint (non-holders)
+    uint256 public constant maxWallet = 4;         // max per wallet (non-holders)
+    uint256 public constant teamReserve = 96;      // amount to mint to the team
     uint256 public startTime;                      // timestamp when minting begins to track hours between phases
     uint256 public reserveTime;                    // timestamp when reserves allowed to be minted
     address public immutable proxyRegistryAddress; // primary proxy address (opensea)
