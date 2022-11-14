@@ -9,14 +9,12 @@ module.exports = {
      network_id: "*",
     },
     testnet: {
-      provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://rinkeby.infura.io/v3/" + process.env.INFURA_PID),
-      network_id: 4,
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://goerli.infura.io/v3/" + process.env.INFURA_PID),
+      network_id: 5,
       confirmations: 1,
       timeoutBlocks: 10,
       skipDryRun: true,
-      production: false,
-      gas: 2500000,
-      gasPrice: 2000000000 // 2 gwei
+      production: false
     },
     mainnet: {
       provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://mainnet.infura.io/v3/" + process.env.INFURA_PID),
@@ -38,7 +36,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: "^0.8.0",
+      version: "^0.8.13",
     }
   },
   solc: {

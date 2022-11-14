@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.13;
 
 import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import {DefaultOperatorFilterer} from "./DefaultOperatorFilterer.sol";
 
 
-contract NFTTest is ERC721A, DefaultOperatorFilterer, Ownable {
+contract Renascence is ERC721A, DefaultOperatorFilterer, Ownable {
     using SafeMath for uint256;
 
     mapping(address => uint256) public publicBalance;   // internal balance of public mints to enforce limits
@@ -21,7 +21,7 @@ contract NFTTest is ERC721A, DefaultOperatorFilterer, Ownable {
     string public baseURI;                         // base URI of hosted IPFS assets
     string public _contractURI;                    // contract URI for details
 
-    constructor() ERC721A("NFTTest", "NFTTest") {
+    constructor() ERC721A("Renascence", "Renascence") {
         reserveTokens(); // reserve tokens for team
     }
 
