@@ -4,11 +4,13 @@ pragma solidity ^0.8.0;
 import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import {DefaultOperatorFilterer} from "../operator-filter-registry/src/DefaultOperatorFilterer.sol";
+import {DefaultOperatorFilterer} from "./DefaultOperatorFilterer.sol";
 
 
-contract Renascence is ERC721A, Ownable {
+contract NFTTest is ERC721A, DefaultOperatorFilterer, Ownable {
     using SafeMath for uint256;
+
+    mapping(address => uint256) public publicBalance;   // internal balance of public mints to enforce limits
 
     bool public mintingIsActive = false;           // control if mints can proceed
     bool public reservedTokens = false;            // if team has minted tokens already
@@ -19,7 +21,7 @@ contract Renascence is ERC721A, Ownable {
     string public baseURI;                         // base URI of hosted IPFS assets
     string public _contractURI;                    // contract URI for details
 
-    constructor() ERC721A("Renascence", "Renascence") {
+    constructor() ERC721A("NFTTest", "NFTTest") {
         reserveTokens(); // reserve tokens for team
     }
 
@@ -80,6 +82,7 @@ contract Renascence is ERC721A, Ownable {
         require(publicBalance[msg.sender].add(numberOfTokens) <= maxWallet, "Cannot mint more than 4 per wallet.");
 
         _mintTokens(numberOfTokens);
+        publicBalance[msg.sender] = publicBalance[msg.sender].add(numberOfTokens);
     }
 
     /*
@@ -94,5 +97,29 @@ contract Renascence is ERC721A, Ownable {
         returns (string memory)
     {
         return string(abi.encodePacked(baseURI, Strings.toString(tokenId)));
+    }
+
+    function transferFrom(address from, address to, uint256 tokenId) 
+        public 
+        override 
+        onlyAllowedOperator(from) 
+    {
+        super.transferFrom(from, to, tokenId);
+    }
+
+    function safeTransferFrom(address from, address to, uint256 tokenId) 
+        public 
+        override 
+        onlyAllowedOperator(from) 
+    {
+        super.safeTransferFrom(from, to, tokenId);
+    }
+
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data)
+        public
+        override
+        onlyAllowedOperator(from)
+    {
+        super.safeTransferFrom(from, to, tokenId, data);
     }
 }
