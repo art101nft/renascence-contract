@@ -21,9 +21,7 @@ contract Renascence is ERC721A, DefaultOperatorFilterer, Ownable {
     string public baseURI;                         // base URI of hosted IPFS assets
     string public _contractURI;                    // contract URI for details
 
-    constructor() ERC721A("Renascence", "Renascence") {
-        reserveTokens(); // reserve tokens for team
-    }
+    constructor() ERC721A("Renascence", "Renascence") {}
 
     // Show contract URI
     function contractURI() public view returns (string memory) {
